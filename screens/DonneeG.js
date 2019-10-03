@@ -21,11 +21,15 @@ import {
           selected2: value
         });
       }
+    
       render(){
+        const  {label,icon} = this.props
           return(
-          
-        
-            
+            <Content style={{marginTop:5,marginBottom:5}}>
+
+            <Label style={{color:'#575757' ,marginLeft :25,fontSize:15}} >{label}</Label>
+            <View style={{flex:1,flexDirection:'row',justifyContent:'flex-start',alignItems:'center'}}>
+            <Icon active name={icon} />
                   <Picker
                     mode="dropdown"
                     iosIcon={<Icon name="arrow-down" />}
@@ -40,8 +44,8 @@ import {
                     <Picker.Item label="Parking" value="key1" />
                     
                   </Picker>
-               
-      
+               </View>
+                  </Content>
           );
       }
   }
@@ -110,24 +114,26 @@ export default class DonneeG extends React.Component{
                   <Input />
                 </Item>
                 
-               <Item style={{paddingBottom:10,}} >
-               <Icon active name='list' />
-                <Label>Type de l'aire:</Label>
+               <Item  >
+               
                 
-                  <ListeDeroul />
+                
+                  <ListeDeroul label='Type de l aire:' icon='list' />
                </Item>
               
                <Item stackedLabel>
-                <Icon active name='pencil' />
+                <Icon active name='alarm-on' />
                 <Label>Orientation de l'aire</Label>
                   <Input />
                 </Item>
               </Form>
-              <Left>
-            <Button transparent >
-              <Icon name='arrow-forward' />
-            </Button>
-          </Left>
+            <View style={{flexDirection:'row', justifyContent:'flex-end'}}>
+              <Button style={{padding:10,margin:10,backgroundColor:'#C8553D'}}>
+                <Text style={{color:'#FFD5C2'}}>
+                  Valider
+                </Text>
+              </Button>
+            </View>
               
             </Content>
            
