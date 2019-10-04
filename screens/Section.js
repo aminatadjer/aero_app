@@ -124,7 +124,7 @@ export default class Section extends React.Component{
               <Input keyboardType={'numeric'} />
                 </Item> 
                 <Item>
-                <RadioButton label='Type de piste:' icon='calendar' />
+                <RadioButton label='Type de piste:' icon='list' />
              </Item>  
               </Form>
             <View style={{flexDirection:'row', justifyContent:'flex-end'}}>

@@ -71,8 +71,8 @@ import {
               <Icon active name={icon} />
               <DatePicker 
                 defaultDate={new Date()}
-                minimumDate={new Date(2018, 1, 1)}
-                maximumDate={new Date(2018, 12, 31)}
+               
+               
                 locale={"en"}
                 timeZoneOffsetInMinutes={undefined}
                 modalTransparent={false}
@@ -120,7 +120,7 @@ export default class DonneeG extends React.Component{
                </Item>
               
                <Item stackedLabel>
-                <Icon active name='alarm-on' />
+                <Icon active name='md-create' />
                 <Label>Orientation de l'aire</Label>
                   <Input />
                 </Item>

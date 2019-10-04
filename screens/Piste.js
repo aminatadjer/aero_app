@@ -40,12 +40,10 @@ import {
                     selectedValue={this.state.selected2}
                     onValueChange={this.onValueChange2.bind(this)}
                   >
-                    <Picker.Item label="0" value="key0" />
-                    <Picker.Item label="1" value="key1" />
-                    <Picker.Item label="2" value="key2" />
-                    <Picker.Item label="3" value="key3" />
-                    <Picker.Item label="4" value="key4" />
-                    <Picker.Item label="5" value="key5" />
+                    <Picker.Item label="1" value="key0" />
+                    <Picker.Item label="2" value="key1" />
+                    <Picker.Item label="3" value="key2" />
+                  
                     
                   </Picker>
                </View>
@@ -67,20 +65,20 @@ export default class Piste extends React.Component{
               <Item stackedLabel>
                 
               <Label>Longueur:</Label>
-              <Icon active name='person' />
-              <Input />
+              <Icon active name='md-resize' />
+              <Input keyboardType={'numeric'}  />
                 </Item>
                
                
                <Item stackedLabel>
-                <Icon active name='airplane' />
+                <Icon active name='md-swap' />
                 <Label>Largeur:</Label>
-                  <Input />
+                  <Input keyboardType={'numeric'}  />
                 </Item>
                 <Item stackedLabel>
-                <Icon active name='airplane' />
-                <Label>Longueur actt:</Label>
-                  <Input />
+                <Icon active name='md-square' />
+                <Label >Longueur actt:</Label>
+                  <Input keyboardType={'numeric'}  />
                 </Item>
                 
                <Item  >

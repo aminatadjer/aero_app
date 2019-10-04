@@ -3,7 +3,7 @@ import DrawerJs from './screens/Drawer';
 
 
 
-export default class App extends React.Component {
+export default class App extends React.Component   {
   render() {
 
     console.disableYellowBox = true

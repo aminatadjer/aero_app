@@ -58,7 +58,7 @@ export default class Maille extends Component {
               <Item stackedLabel>
                 
               <Label style ={{ color :'#C8553D'}}>Numéro de Maille</Label>
-              <Icon active name='md-create' />
+              <Icon active name='md-grid' />
               <Input keyboardType={'numeric'} />
                 </Item > 
               
