@@ -70,7 +70,7 @@ import {
               <View style={{flex:1,flexDirection:'row',justifyContent:'flex-start',alignItems:'center'}}>
               <Icon active name={icon} />
               <DatePicker 
-                defaultDate={new Date(2018, 4, 4)}
+                defaultDate={new Date()}
                 minimumDate={new Date(2018, 1, 1)}
                 maximumDate={new Date(2018, 12, 31)}
                 locale={"en"}
@@ -92,9 +92,7 @@ export default class DonneeG extends React.Component{
 
     render(){
         return(
-            <Container>
-      
-            <Content>
+            <View>
                 
            
               <Form>
@@ -134,20 +132,12 @@ export default class DonneeG extends React.Component{
                 </Text>
               </Button>
             </View>
-              
-            </Content>
-           
-            
-          </Container>
+            </View>
         );
     }
 }
 const styles=StyleSheet.create({
-    regform:{
-alignSelf:'stretch',
-backgroundColor:'#FFffff'
-
-    },
+  
     header:{
     fontSize:24,
     color:'#588B8B',
