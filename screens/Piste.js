@@ -8,6 +8,8 @@ import {
     Image,
     ImageBackground,
   } from 'react-native';
+  import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
   import { Container, Header, Content, Form, Item, Input, Label, DatePicker, Picker,Icon,h1, Footer, Right, Left,Button } from 'native-base';
   class ListeDeroul extends React.Component{
     constructor(props) {
@@ -55,6 +57,9 @@ import {
 export default class Piste extends React.Component{
 
     render(){
+      const { navigation } = this.props;
+     this.state={nom:navigation.getParam('nom', 'NO-ID'),}
+ 
         return(
             <Container>
       
@@ -91,12 +96,13 @@ export default class Piste extends React.Component{
              
               </Form>
             <View style={{flexDirection:'row', }}>
+            
             <Button style={{padding:10,margin:10,backgroundColor:'#C8553D',justifySelf:'flex-start'}} onPress={() => this.props.navigation.navigate('DonneeG')}>
                 <Text style={{color:'#FFD5C2'}}>
                   Retour
                 </Text>
               </Button>
-              <Button style={{padding:10,margin:10,marginLeft:208,backgroundColor:'#C8553D',alignSelf:'flex-end'}} onPress={() => this.props.navigation.navigate('Section')}>
+              <Button style={{padding:10,margin:10,marginLeft:208,backgroundColor:'#C8553D',alignSelf:'flex-end'}} onPress={() => this.props.navigation.navigate('Section',{nom:this.state.nom})}>
                 <Text style={{color:'#FFD5C2'}}>
                   Valider
                 </Text>

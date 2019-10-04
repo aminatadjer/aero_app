@@ -4,12 +4,23 @@ import { Container, Header, Content, Card, CardItem,  Body,Item } from "native-b
 import { Form, Input, Label,Icon,Button } from 'native-base';
 export default class Maille extends Component {
   render() {
+    const { navigation } = this.props;
     return (
       <Container>
         <Content >
           <Card>
+              
             <CardItem header bordered>
               <Text style = {{color : '#C8553D'}}>Informations Saisies  : </Text>
+            </CardItem>
+            <CardItem bordered>
+              <Body>
+              <Text>
+          Nom relevé:{' '}
+          {JSON.stringify(navigation.getParam('nom', 'default value'))}
+        </Text>
+               
+              </Body>
             </CardItem>
             <CardItem bordered>
               <Body>

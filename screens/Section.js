@@ -89,6 +89,9 @@ import {TextInput,StyleSheet,View,Text,TouchableOpacity,Image,ImageBackground,} 
 export default class Section extends React.Component{
 
     render(){
+        const { navigation } = this.props;
+        this.state={nom:navigation.getParam('nom', 'NO-ID'),}
+    
         return(
             <View>
 
@@ -133,7 +136,7 @@ export default class Section extends React.Component{
                   Retour
                 </Text>
               </Button>
-              <Button style={{padding:10,margin:10,marginLeft:208,backgroundColor:'#C8553D',alignSelf:'flex-end'}} onPress={() => this.props.navigation.navigate('Maille')}>
+              <Button style={{padding:10,margin:10,marginLeft:208,backgroundColor:'#C8553D',alignSelf:'flex-end'}} onPress={() => this.props.navigation.navigate('Maille',{nom:this.state.nom})}>
                 <Text style={{color:'#FFD5C2'}}>
                   Valider
                 </Text>
