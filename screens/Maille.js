@@ -13,7 +13,7 @@ export default class Maille extends Component {
             </CardItem>
             <CardItem bordered>
               <Body>
-                <Text>Aérodrome : Abjkdbvhj</Text>
+                <Text>Aérodrome : Alg029</Text>
                
               </Body>
             </CardItem>
