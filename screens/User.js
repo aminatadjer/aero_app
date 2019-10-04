@@ -8,6 +8,15 @@ import Section from './Section';
 import Piste from './Piste';
 import Maille from './Maille';
 import { createAppContainer,tabBarOptions,TabBarNavigationConfig } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+const MainNavigator = createStackNavigator({
+  DonneeG: DonneeG,
+  Piste: Piste,
+  Section: Section,
+  Maille: Maille,
+});
+
+const StackNav = createAppContainer(MainNavigator);
 
 
 const Tab = createMaterialTopTabNavigator(

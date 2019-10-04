@@ -128,12 +128,12 @@ export default class Section extends React.Component{
              </Item>  
               </Form>
               <View style={{flexDirection:'row', }}>
-            <Button style={{padding:10,margin:10,backgroundColor:'#C8553D',justifySelf:'flex-start'}}>
+            <Button style={{padding:10,margin:10,backgroundColor:'#C8553D',justifySelf:'flex-start'}} onPress={() => this.props.navigation.navigate('Piste')}>
                 <Text style={{color:'#FFD5C2'}}>
                   Retour
                 </Text>
               </Button>
-              <Button style={{padding:10,margin:10,marginLeft:208,backgroundColor:'#C8553D',alignSelf:'flex-end'}}>
+              <Button style={{padding:10,margin:10,marginLeft:208,backgroundColor:'#C8553D',alignSelf:'flex-end'}} onPress={() => this.props.navigation.navigate('Maille')}>
                 <Text style={{color:'#FFD5C2'}}>
                   Valider
                 </Text>

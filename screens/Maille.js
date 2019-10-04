@@ -66,7 +66,7 @@ export default class Maille extends Component {
             </CardItem>
             </Card>
             <View style={{flexDirection:'row', }}>
-            <Button style={{padding:10,margin:10,backgroundColor:'#C8553D',justifySelf:'flex-start'}}>
+            <Button style={{padding:10,margin:10,backgroundColor:'#C8553D',justifySelf:'flex-start'}} onPress={() => this.props.navigation.navigate('Section')}>
                 <Text style={{color:'#FFD5C2'}}>
                   Retour
                 </Text>

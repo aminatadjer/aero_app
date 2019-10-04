@@ -8,6 +8,7 @@ import {
     Image,
     ImageBackground,
   } from 'react-native';
+
   import { Container, Header, Content, Form, Item, Input, Label, DatePicker, Picker,Icon,h1, Footer, Right, Left,Button } from 'native-base';
   class ListeDeroul extends React.Component{
     constructor(props) {
@@ -126,7 +127,7 @@ export default class DonneeG extends React.Component{
                 </Item>
               </Form>
             <View style={{flexDirection:'row', justifyContent:'flex-end'}}>
-              <Button style={{padding:10,margin:10,backgroundColor:'#C8553D'}}>
+              <Button style={{padding:10,margin:10,backgroundColor:'#C8553D'}}  onPress={() => this.props.navigation.navigate('Piste')}>
                 <Text style={{color:'#FFD5C2'}}>
                   Valider
                 </Text>
