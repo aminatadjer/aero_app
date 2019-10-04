@@ -90,12 +90,19 @@ export default class Piste extends React.Component{
               
              
               </Form>
-            <View style={{flexDirection:'row', justifyContent:'flex-end'}}>
-              <Button style={{padding:10,margin:10,backgroundColor:'#C8553D'}}>
+            <View style={{flexDirection:'row', }}>
+            <Button style={{padding:10,margin:10,backgroundColor:'#C8553D',justifySelf:'flex-start'}}>
+                <Text style={{color:'#FFD5C2'}}>
+                  Retour
+                </Text>
+              </Button>
+              <Button style={{padding:10,margin:10,marginLeft:208,backgroundColor:'#C8553D',alignSelf:'flex-end'}}>
                 <Text style={{color:'#FFD5C2'}}>
                   Valider
                 </Text>
               </Button>
+             
+             
             </View>
               
             </Content>

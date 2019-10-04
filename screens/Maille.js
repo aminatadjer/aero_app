@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import {StyleSheet,View} from 'react-native';
-import { Container, Header, Content, Card, CardItem, Text, Body,Item } from "native-base";
+import {StyleSheet,View, Text} from 'react-native';
+import { Container, Header, Content, Card, CardItem,  Body,Item } from "native-base";
 import { Form, Input, Label,Icon,Button } from 'native-base';
 export default class Maille extends Component {
   render() {
     return (
       <Container>
-        <Content padder>
+        <Content >
           <Card>
             <CardItem header bordered>
               <Text style = {{color : '#C8553D'}}>Informations Saisies  : </Text>
@@ -55,22 +55,29 @@ export default class Maille extends Component {
                  
               
              
-              <Item stackedLabel>
+              <Item stackedLabel style={{width:310}} >
                 
               <Label style ={{ color :'#C8553D'}}>Numéro de Maille</Label>
-              <Icon active name='md-grid' />
-              <Input keyboardType={'numeric'} />
-                </Item > 
+              <Icon active name='md-grid' style={{marginLeft:10}} />
+              <Input keyboardType={'numeric'} style={{}}/>
+               </Item > 
               
         
             </CardItem>
             </Card>
-            <View style={{flexDirection:'row', justifyContent:'flex-end'}}>
-              <Button style={{padding:10,margin:10,backgroundColor:'#C8553D'}}>
+            <View style={{flexDirection:'row', }}>
+            <Button style={{padding:10,margin:10,backgroundColor:'#C8553D',justifySelf:'flex-start'}}>
                 <Text style={{color:'#FFD5C2'}}>
-                  Commencer
+                  Retour
                 </Text>
               </Button>
+              <Button style={{padding:10,margin:10,marginLeft:208,backgroundColor:'#C8553D',alignSelf:'flex-end'}}>
+                <Text style={{color:'#FFD5C2'}}>
+                  Valider
+                </Text>
+              </Button>
+             
+             
             </View>
         </Content>
       </Container>
@@ -79,15 +86,5 @@ export default class Maille extends Component {
 }
 const styles=StyleSheet.create({
     
-    button:{
-      alignSelf:'flex-end',
-      alignItems:'center',
-      paddingRight:40,
-      paddingLeft:40,
-      paddingTop:20,
-      paddingBottom:20,
-      backgroundColor:"#fefbd8",
-      marginTop:30,
-      borderRadius:5,
-    },
+
 });
