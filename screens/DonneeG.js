@@ -61,7 +61,8 @@ import {
       }
       render() {
 
-        const  {label,icon} = this.props
+        const  {label,icon} = this.props;
+        
         return (
        
            
@@ -92,7 +93,7 @@ import {
 export default class DonneeG extends React.Component{
   constructor(props) {
     super(props);
-    this.state = {text1: '',text2:'',text3:''};
+    this.state = {nom: '',date: '',code: '',type: 'Piste',orientation: ''};
   }
     render(){
         return(
@@ -104,34 +105,34 @@ export default class DonneeG extends React.Component{
                 
               <Label>Nom du releveur:</Label>
               <Icon active name='person' />
-              <Input    onChangeText={(text1) => this.setState({text1})} value={this.state.text1} />
+              <Input    onChangeText={(nom) => this.setState({nom})} value={this.state.nom} />
                 </Item>
                 <Item >
-                   <DateForm label='Date du relevé:' icon='calendar'/>
+                   <DateForm label='Date du relevé:' icon='calendar' onChangeText={(date) => this.setState({date})} value={this.state.date}/>
                </Item>
                
                <Item stackedLabel>
                 <Icon active name='airplane' />
                 <Label>Code aérodrome:</Label>
-                  <Input onChangeText={(text2) => this.setState({text2})} value={this.state.text2} />
+                  <Input onChangeText={(code) => this.setState({code})} value={this.state.code} />
                 </Item>
                 
                <Item  >
                
                 
                 
-                  <ListeDeroul label='Type de l aire:' icon='list' />
+                  <ListeDeroul label='Type de l aire:' icon='list' onChangeText={(type) => this.setState({type})} value={this.state.type}/>
                </Item>
               
                <Item stackedLabel>
                 <Icon active name='md-create' />
                 <Label>Orientation de l'aire</Label>
-                  <Input onChangeText={(text3) => this.setState({text3})} value={this.state.text3} />
+                  <Input onChangeText={(orientation) => this.setState({orientation})} value={this.state.orientation} />
                 </Item>
               </Form>
             <View style={{flexDirection:'row', justifyContent:'flex-end'}}>
            
-              <Button style={{padding:10,margin:10,backgroundColor:'#C8553D'}}  onPress={() => this.props.navigation.navigate('Piste',{nom:this.state.text1} )}>
+              <Button style={{padding:10,margin:10,backgroundColor:'#C8553D'}}  onPress={() => this.props.navigation.navigate('Piste',{nom:this.state.nom, date:this.state.date, code:this.state.code, type:this.state.type, orientation:this.state.orientation} )}>
                 <Text style={{color:'#FFD5C2'}}>
                   Valider
                 </Text>

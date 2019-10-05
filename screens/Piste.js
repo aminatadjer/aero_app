@@ -58,7 +58,7 @@ export default class Piste extends React.Component{
 
     render(){
       const { navigation } = this.props;
-     this.state={nom:navigation.getParam('nom', 'NO-ID'),}
+     this.state={nom:navigation.getParam('nom', 'NO-ID'),date:navigation.getParam('date', 'NO-ID'),code:navigation.getParam('code', 'NO-ID'),type:navigation.getParam('type', 'NO-ID'),orientation:navigation.getParam('orientation', 'NO-ID'),longueurP:0,LargeurP:0,longueurActtP:0,nbsections:0};
  
         return(
             <Container>
@@ -71,26 +71,26 @@ export default class Piste extends React.Component{
                 
               <Label>Longueur:</Label>
               <Icon active name='md-resize' />
-              <Input keyboardType={'numeric'}  />
+              <Input keyboardType={'numeric'} onChangeText={(longueurP) => this.setState({longueurP})} value={this.state.longueurP} />
                 </Item>
                
                
                <Item stackedLabel>
                 <Icon active name='md-swap' />
                 <Label>Largeur:</Label>
-                  <Input keyboardType={'numeric'}  />
+                  <Input keyboardType={'numeric'} onChangeText={(LargeurP) => this.setState({LargeurP})} value={this.state.LargeurP} />
                 </Item>
                 <Item stackedLabel>
                 <Icon active name='md-square' />
                 <Label >Longueur actt:</Label>
-                  <Input keyboardType={'numeric'}  />
+                  <Input keyboardType={'numeric'} onChangeText={(longueurActtP) => this.setState({longueurActtP})} value={this.state.longueurActtP} />
                 </Item>
                 
                <Item  >
                
                 
                 
-                  <ListeDeroul label='Nombre de sections:' icon='list' />
+                  <ListeDeroul label='Nombre de sections:' icon='list' onChangeText={(nbsections) => this.setState({nbsections})} value={this.state.nbsections}/>
                </Item>
               
              
@@ -102,7 +102,7 @@ export default class Piste extends React.Component{
                   Retour
                 </Text>
               </Button>
-              <Button style={{padding:10,margin:10,marginLeft:208,backgroundColor:'#C8553D',alignSelf:'flex-end'}} onPress={() => this.props.navigation.navigate('Section',{nom:this.state.nom})}>
+              <Button style={{padding:10,margin:10,marginLeft:208,backgroundColor:'#C8553D',alignSelf:'flex-end'}} onPress={() => this.props.navigation.navigate('Section',{nom:this.state.nom,date:this.state.date,code:this.state.code,orientation:this.state.orientation},)}>
                 <Text style={{color:'#FFD5C2'}}>
                   Valider
                 </Text>
@@ -110,7 +110,6 @@ export default class Piste extends React.Component{
              
              
             </View>
-              
             </Content>
            
             

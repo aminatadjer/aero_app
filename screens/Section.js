@@ -61,7 +61,7 @@ import {TextInput,StyleSheet,View,Text,TouchableOpacity,Image,ImageBackground,} 
               <Icon active name={icon} />
               
           <ListItem>
-              <Text>Solide </Text>
+              <Text>Souple </Text>
             <Radio 
             color={"#FFD5C2"}
             selectedColor={"#C8553D"}
@@ -90,7 +90,7 @@ export default class Section extends React.Component{
 
     render(){
         const { navigation } = this.props;
-        this.state={nom:navigation.getParam('nom', 'NO-ID'),}
+        this.state={nom:navigation.getParam('nom', 'NO-ID'),code:navigation.getParam('code', 'NO-ID'),date:navigation.getParam('date', 'NO-ID'),orientation:navigation.getParam('orientation', 'NO-ID'),numSec:0,pmDeb:0,longueurS:0,longueurM:0,largeurM:0,typeSec:'souple'}
     
         return(
             <View>
@@ -100,34 +100,34 @@ export default class Section extends React.Component{
               <Form>
               <Item>
                 
-                <ListeDeroul label='Numéro de Section:' icon='md-list-box' />
+                <ListeDeroul label='Numéro de Section:' icon='md-list-box' onChangeText={(numSec) => this.setState({numSec})} value={this.state.numSec} />
              </Item>
               <Item stackedLabel>
                 
               <Label>PmDébut:</Label>
-              <Icon active name='md-play' /> 
+              <Icon active name='md-play'  /> 
               
-              <Input  keyboardType={'numeric'}/>
+              <Input  keyboardType={'numeric'} onChangeText={(pmDeb) => this.setState({pmDeb})} value={this.state.pmDeb} />
                 </Item>
                <Item stackedLabel>
                 
               <Label>Longueur:</Label>
               <Icon active name='md-resize' />
-              <Input keyboardType={'numeric'}/>
+              <Input keyboardType={'numeric'} onChangeText={(longueurS) => this.setState({longueurS})} value={this.state.longueurS}/>
                 </Item>
                 <Item stackedLabel>
                 
               <Label>LongueurMaille:</Label>
               <Icon active name='md-resize' />
-              <Input keyboardType={'numeric'}/>
+              <Input keyboardType={'numeric'} onChangeText={(longueurM) => this.setState({longueurM})} value={this.state.longueurM}/>
                 </Item>
                 <Item stackedLabel>
               <Label>LargeurMaille</Label>
               <Icon active name='md-swap'/>
-              <Input keyboardType={'numeric'} />
+              <Input keyboardType={'numeric'} onChangeText={(largeurM) => this.setState({largeurM})} value={this.state.largeurM} />
                 </Item> 
                 <Item>
-                <RadioButton label='Type de piste:' icon='list' />
+                <RadioButton label='Type de section:' icon='list' onChangeText={(typeSec) => this.setState({typeSec})} value={this.state.typeSec} />
              </Item>  
               </Form>
               <View style={{flexDirection:'row', }}>
@@ -136,14 +136,16 @@ export default class Section extends React.Component{
                   Retour
                 </Text>
               </Button>
-              <Button style={{padding:10,margin:10,marginLeft:208,backgroundColor:'#C8553D',alignSelf:'flex-end'}} onPress={() => this.props.navigation.navigate('Maille',{nom:this.state.nom})}>
+              <Button style={{padding:10,margin:10,marginLeft:208,backgroundColor:'#C8553D',alignSelf:'flex-end'}} onPress={() => this.props.navigation.navigate('Maille',{nom:this.state.nom,date:this.state.date,code:this.state.code,orientation:this.state.orientation,numSec:this.state.numSec,typeSec:this.state.typeSec,longueurM:this.state.longueurM})}>
                 <Text style={{color:'#FFD5C2'}}>
                   Valider
                 </Text>
               </Button>
+              
              
              
             </View>
+           
             </View>
         );
     }

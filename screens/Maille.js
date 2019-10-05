@@ -5,6 +5,7 @@ import { Form, Input, Label,Icon,Button } from 'native-base';
 export default class Maille extends Component {
   render() {
     const { navigation } = this.props;
+    this.state = {nbMaille:(navigation.getParam('longueurS', 'NO-ID')) / (navigation.getParam('longueurM', 'NO-ID'))};
     return (
       <Container>
         <Content >
@@ -24,38 +25,43 @@ export default class Maille extends Component {
             </CardItem>
             <CardItem bordered>
               <Body>
-                <Text>Aérodrome : Alg029</Text>
+                <Text>Aérodrome : {' '}
+          {JSON.stringify(navigation.getParam('code', 'default value'))} </Text>
                
               </Body>
             </CardItem>
             <CardItem bordered>
               <Body>
-                <Text>Orientation : 16/0084 </Text>
+                <Text>Orientation : {' '}
+          {JSON.stringify(navigation.getParam('orientation', 'default value'))} </Text>
                
               </Body>
             </CardItem>
             <CardItem bordered>
               <Body>
-                <Text>Date : 04/10/2019 </Text>
+                <Text>Date : {' '}
+          {JSON.stringify(navigation.getParam('date', 'default value'))} </Text>
                
               </Body>
             </CardItem>
            
             <CardItem bordered>
               <Body>
-                <Text>Numéro de section : 02 </Text>
+                <Text>Numéro de section : {' '}
+          {JSON.stringify(navigation.getParam('numSec', 'default value'))} </Text>
                
               </Body>
             </CardItem>
             <CardItem bordered>
               <Body>
-                <Text>Type de Piste : Rigide </Text>
+                <Text>Type de Section : {' '}
+          {JSON.stringify(navigation.getParam('typeSec', 'default value'))} </Text>
                
               </Body>
             </CardItem>
             <CardItem bordered>
               <Body>
-                <Text>Nombre de Mailles  : 15 </Text>
+                <Text>Nombre de Mailles  : {this.state.nbMaille} </Text>
                
               </Body>
             </CardItem>
