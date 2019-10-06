@@ -8,7 +8,7 @@ const cards = [
     text: 'Etape 1 ',
     name: ' Glisser',
     image: require('../assets/izan.png'),
-    text2 :'dans cette étape 1 on va  '
+    text2 :'dans cette étape 1 on va '
   },
   {
     text: 'Etape 2',
