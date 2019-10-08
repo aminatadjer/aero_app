@@ -14,13 +14,19 @@ import {
     constructor(props) {
         super(props);
         this.state = {
-          selected2: undefined
+          selected2: ""
         };
       }
       onValueChange2(value) {
+        
         this.setState({
           selected2: value
+
         });
+        this.props.parentCallback(value);
+        
+      
+       
       }
     
       render(){
@@ -41,8 +47,9 @@ import {
                     selectedValue={this.state.selected2}
                     onValueChange={this.onValueChange2.bind(this)}
                   >
-                    <Picker.Item label="Piste" value="key0" />
-                    <Picker.Item label="Parking" value="key1" />
+                    <Picker.Item label="Veuillez choisir:" value="0" />
+                    <Picker.Item label="Piste" value="Piste" />
+                    <Picker.Item label="Parking" value="Parking" />
                     
                   </Picker>
                </View>
@@ -58,6 +65,7 @@ import {
       }
       setDate(newDate) {
         this.setState({ chosenDate: newDate });
+        this.props.parentCallback(newDate.toString().substr(4, 12));
       }
       render() {
 
@@ -72,18 +80,24 @@ import {
               <View style={{flex:1,flexDirection:'row',justifyContent:'flex-start',alignItems:'center'}}>
               <Icon active name={icon} />
               <DatePicker 
-                defaultDate={new Date()}
+      
                
                
-                locale={"en"}
+                locale={"fr"}
                 timeZoneOffsetInMinutes={undefined}
+                
                 modalTransparent={false}
                 animationType={"fade"}
                 androidMode={"default"}
-                
+                placeHolderText="Choisir date"
                 onDateChange={this.setDate}
                 disabled={false}
                 />
+                </View>
+                <View>
+                <Text>
+              Date: {this.state.chosenDate.toString().substr(4, 12)}
+            </Text>
                 </View>
             </Content>
         
@@ -93,8 +107,14 @@ import {
 export default class DonneeG extends React.Component{
   constructor(props) {
     super(props);
-    this.state = {nom: '',date: '',code: '',type: 'Piste',orientation: ''};
+    this.state = {nom: '',date:'',code: '',type: '',orientation: ''};
   }
+  callbackFunction = (childData) => {
+    this.setState({type: childData})
+}
+callbackFunctionDate = (childData) => {
+  this.setState({date: childData})
+}
     render(){
         return(
             <View>
@@ -108,7 +128,7 @@ export default class DonneeG extends React.Component{
               <Input    onChangeText={(nom) => this.setState({nom})} value={this.state.nom} />
                 </Item>
                 <Item >
-                   <DateForm label='Date du relevé:' icon='calendar' onChangeText={(date) => this.setState({date})} value={this.state.date}/>
+                   <DateForm label='Date du relevé:' icon='calendar' parentCallback = {this.callbackFunctionDate} value={this.state.date}/>
                </Item>
                
                <Item stackedLabel>
@@ -121,7 +141,7 @@ export default class DonneeG extends React.Component{
                
                 
                 
-                  <ListeDeroul label='Type de l aire:' icon='list' onChangeText={(type) => this.setState({type})} value={this.state.type}/>
+               <ListeDeroul label='Type de l aire:' icon='list' parentCallback = {this.callbackFunction}  value={this.state.type}/>
                </Item>
               
                <Item stackedLabel>
@@ -138,6 +158,11 @@ export default class DonneeG extends React.Component{
                 </Text>
               </Button>
             </View>
+            <Text>
+                {this.state.nom}
+                {this.state.date}
+                {this.state.type}
+              </Text>
             </View>
         );
     }
