@@ -5,7 +5,7 @@ import { Form, Input, Label,Icon,Button } from 'native-base';
 export default class Maille extends Component {
   render() {
     const { navigation } = this.props;
-    this.state = {nbMaille:(navigation.getParam('longueurS', 'NO-ID')) / (navigation.getParam('longueurM', 'NO-ID'))};
+    this.state = {nbMaille:(navigation.getParam('nbMailles', 'NO-ID')) };
     return (
       <Container>
         <Content >

@@ -15,13 +15,14 @@ import { createStackNavigator } from 'react-navigation-stack';
     constructor(props) {
         super(props);
         this.state = {
-          selected2: undefined
+          selected2: ""
         };
       }
       onValueChange2(value) {
         this.setState({
           selected2: value
         });
+        this.props.parentCallback(value);
       }
     
       render(){
@@ -42,12 +43,14 @@ import { createStackNavigator } from 'react-navigation-stack';
                     selectedValue={this.state.selected2}
                     onValueChange={this.onValueChange2.bind(this)}
                   >
-                    <Picker.Item label="1" value="key0" />
-                    <Picker.Item label="2" value="key1" />
-                    <Picker.Item label="3" value="key2" />
+                    <Picker.Item label="Veuillez choisir le nombre de sections" value="0" />
+                    <Picker.Item label="1" value="1" />
+                    <Picker.Item label="2" value="2" />
+                    <Picker.Item label="3" value="3" />
                   
                     
                   </Picker>
+                  <Text>{this.state.selected2}</Text>
                </View>
                   </Content>
           );
@@ -55,12 +58,22 @@ import { createStackNavigator } from 'react-navigation-stack';
   }
   
 export default class Piste extends React.Component{
+  constructor(props) {
+    
+    super(props);
+    this.state={longueurP:0,LargeurP:0,longueurActtP:0,nbsections:''}
+  }
 
+  callbackFunction = (childData) => {
+    this.setState({nbsections: childData})
+  }
+     
     render(){
       const { navigation } = this.props;
-     this.state={nom:navigation.getParam('nom', 'NO-ID'),date:navigation.getParam('date', 'NO-ID'),code:navigation.getParam('code', 'NO-ID'),type:navigation.getParam('type', 'NO-ID'),orientation:navigation.getParam('orientation', 'NO-ID'),longueurP:0,LargeurP:0,longueurActtP:0,nbsections:0};
- 
-        return(
+      this.state1={nom:navigation.getParam('nom', 'NO-ID'),date:navigation.getParam('date', 'NO-ID'),code:navigation.getParam('code', 'NO-ID'),orientation:navigation.getParam('orientation', 'NO-ID')};
+     
+
+     return(
             <Container>
       
             <Content>
@@ -90,7 +103,7 @@ export default class Piste extends React.Component{
                
                 
                 
-                  <ListeDeroul label='Nombre de sections:' icon='list' onChangeText={(nbsections) => this.setState({nbsections})} value={this.state.nbsections}/>
+                  <ListeDeroul label='Nombre de sections:' icon='list'  parentCallback = {this.callbackFunction} value={this.state.nbsections}/>
                </Item>
               
              
@@ -102,7 +115,7 @@ export default class Piste extends React.Component{
                   Retour
                 </Text>
               </Button>
-              <Button style={{padding:10,margin:10,marginLeft:208,backgroundColor:'#C8553D',alignSelf:'flex-end'}} onPress={() => this.props.navigation.navigate('Section',{nom:this.state.nom,date:this.state.date,code:this.state.code,orientation:this.state.orientation},)}>
+              <Button style={{padding:10,margin:10,marginLeft:208,backgroundColor:'#C8553D',alignSelf:'flex-end'}} onPress={() => this.props.navigation.navigate('Section',{nom:this.state1.nom,date:this.state1.date,code:this.state1.code,orientation:this.state1.orientation},)}>
                 <Text style={{color:'#FFD5C2'}}>
                   Valider
                 </Text>
@@ -110,8 +123,14 @@ export default class Piste extends React.Component{
              
              
             </View>
+         
             </Content>
-           
+           <View>
+           <Text>
+            hello  {this.state.nbsections}
+            {this.state1.date}
+            </Text>
+           </View>
             
           </Container>
         );
