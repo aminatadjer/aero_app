@@ -12,6 +12,7 @@ import {TextInput,StyleSheet,View,Text,TouchableOpacity,Image,ImageBackground,} 
         this.setState({
           selected2: value
         });
+        this.props.parentCallback(value);
       }
     
       render(){
@@ -32,9 +33,10 @@ import {TextInput,StyleSheet,View,Text,TouchableOpacity,Image,ImageBackground,} 
                     selectedValue={this.state.selected2}
                     onValueChange={this.onValueChange2.bind(this)}
                   >
-                    <Picker.Item label="1" value="key0" />
-                    <Picker.Item label="2" value="key1" />
-                    <Picker.Item label="3" value="key2" />
+                    <Picker.Item label="Numéro de section choisie" value="1" />
+                    <Picker.Item label="1" value="1" />
+                    <Picker.Item label="2" value="2" />
+                    <Picker.Item label="3" value="3" />
                     
                   </Picker>
                </View>
@@ -47,10 +49,16 @@ import {TextInput,StyleSheet,View,Text,TouchableOpacity,Image,ImageBackground,} 
     constructor() {
         super();
         this.state = {
-         itemSelected: 'itemOne',
-       }}
+         itemSelected: 'Souple',
+       
+       };
+       
+      }
+    
+    
     render() {
-        const  {label,icon} = this.props
+        const  {label,icon} = this.props;
+  
     return (
         
         
@@ -65,8 +73,8 @@ import {TextInput,StyleSheet,View,Text,TouchableOpacity,Image,ImageBackground,} 
             <Radio 
             color={"#FFD5C2"}
             selectedColor={"#C8553D"}
-            onPress={() => this.setState({ itemSelected: 'itemOne' })}
-              selected={this.state.itemSelected == 'itemOne'}
+            onPress={() => (this.setState({ itemSelected: 'Souple' }), this.props.parentCallback('Souple'))}
+              selected={this.state.itemSelected == 'Souple'}
             />
              </ListItem>
             
@@ -75,11 +83,14 @@ import {TextInput,StyleSheet,View,Text,TouchableOpacity,Image,ImageBackground,} 
             <Radio
               color={"#FFD5C2"}
               selectedColor={"#C8553D"}
-             onPress={() => this.setState({ itemSelected: 'itemTwo' })}
-                  selected={this.state.itemSelected == 'itemTwo' }
+             onPress={() => (this.setState({ itemSelected: 'Rigide' }), this.props.parentCallback('Rigide'))}
+                  selected={this.state.itemSelected == 'Rigide' }
                 />
             </ListItem>
             
+          </View>
+          <View>
+            <Text>choisie est {this.state.itemSelected}</Text>
           </View>
         </Content>
      
@@ -87,11 +98,23 @@ import {TextInput,StyleSheet,View,Text,TouchableOpacity,Image,ImageBackground,} 
   }
 }
 export default class Section extends React.Component{
+  constructor(props) {
+    
+    super(props);
+    this.state={numSec:0,pmDeb:0,longueurS:0,longueurM:0,largeurM:1,typeSec:'Souple',}
+    
+  }
+  callbackFunctionType = (childData) => {
+    this.setState({typeSec: childData})
+  }
 
+  callbackFunction = (childData) => {
+    this.setState({numSec: childData})
+  }
     render(){
         const { navigation } = this.props;
-        this.state={nom:navigation.getParam('nom', 'NO-ID'),code:navigation.getParam('code', 'NO-ID'),date:navigation.getParam('date', 'NO-ID'),orientation:navigation.getParam('orientation', 'NO-ID'),numSec:0,pmDeb:0,longueurS:0,longueurM:0,largeurM:0,typeSec:'souple'}
-    
+        this.state1={nom:navigation.getParam('nom', 'NO-ID'),code:navigation.getParam('code', 'NO-ID'),date:navigation.getParam('date', 'NO-ID'),orientation:navigation.getParam('orientation', 'NO-ID')}
+        var nbMailles=Math.round((this.state.longueurS/this.state.longueurM));
         return(
             <View>
 
@@ -100,7 +123,7 @@ export default class Section extends React.Component{
               <Form>
               <Item>
                 
-                <ListeDeroul label='Numéro de Section:' icon='md-list-box' onChangeText={(numSec) => this.setState({numSec})} value={this.state.numSec} />
+                <ListeDeroul label='Numéro de Section:' icon='md-list-box' parentCallback = {this.callbackFunction} value={this.state.numSec} />
              </Item>
               <Item stackedLabel>
                 
@@ -127,7 +150,7 @@ export default class Section extends React.Component{
               <Input keyboardType={'numeric'} onChangeText={(largeurM) => this.setState({largeurM})} value={this.state.largeurM} />
                 </Item> 
                 <Item>
-                <RadioButton label='Type de section:' icon='list' onChangeText={(typeSec) => this.setState({typeSec})} value={this.state.typeSec} />
+                <RadioButton label='Type de section:' icon='list' parentCallback = {this.callbackFunctionType} value={this.state.typeSec} />
              </Item>  
               </Form>
               <View style={{flexDirection:'row', }}>
@@ -136,7 +159,7 @@ export default class Section extends React.Component{
                   Retour
                 </Text>
               </Button>
-              <Button style={{padding:10,margin:10,marginLeft:208,backgroundColor:'#C8553D',alignSelf:'flex-end'}} onPress={() => this.props.navigation.navigate('Maille',{nom:this.state.nom,date:this.state.date,code:this.state.code,orientation:this.state.orientation,numSec:this.state.numSec,typeSec:this.state.typeSec,longueurM:this.state.longueurM})}>
+              <Button style={{padding:10,margin:10,marginLeft:208,backgroundColor:'#C8553D',alignSelf:'flex-end'}} onPress={() => this.props.navigation.navigate('Maille',{nom:this.state1.nom,date:this.state1.date,code:this.state1.code,orientation:this.state1.orientation,numSec:this.state.numSec,typeSec:this.state.typeSec,longueurM:this.state.longueurM,nbMailles:(this.state.longueurS/this.state.longueurM)})}>
                 <Text style={{color:'#FFD5C2'}}>
                   Valider
                 </Text>
@@ -144,6 +167,9 @@ export default class Section extends React.Component{
               
              
              
+            </View>
+            <View>
+              <Text>hhhh{nbMailles}</Text>
             </View>
            
             </View>
