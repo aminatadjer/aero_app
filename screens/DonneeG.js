@@ -14,13 +14,19 @@ import {
     constructor(props) {
         super(props);
         this.state = {
-          selected2: undefined
+          selected2: ""
         };
       }
       onValueChange2(value) {
+        
         this.setState({
           selected2: value
+
         });
+        this.props.parentCallback(value);
+        
+      
+       
       }
     
       render(){
@@ -41,8 +47,9 @@ import {
                     selectedValue={this.state.selected2}
                     onValueChange={this.onValueChange2.bind(this)}
                   >
-                    <Picker.Item label="Piste" value="key0" />
-                    <Picker.Item label="Parking" value="key1" />
+                    <Picker.Item label="Veuillez choisir:" value="0" />
+                    <Picker.Item label="Piste" value="Piste" />
+                    <Picker.Item label="Parking" value="Parking" />
                     
                   </Picker>
                </View>
@@ -93,8 +100,11 @@ import {
 export default class DonneeG extends React.Component{
   constructor(props) {
     super(props);
-    this.state = {nom: '',date: '',code: '',type: 'Piste',orientation: ''};
+    this.state = {nom: '',date: '',code: '',type: '',orientation: ''};
   }
+  callbackFunction = (childData) => {
+    this.setState({type: childData})
+}
     render(){
         return(
             <View>
@@ -121,7 +131,7 @@ export default class DonneeG extends React.Component{
                
                 
                 
-                  <ListeDeroul label='Type de l aire:' icon='list' onChangeText={(type) => this.setState({type})} value={this.state.type}/>
+               <ListeDeroul label='Type de l aire:' icon='list' parentCallback = {this.callbackFunction}  value={this.state.type}/>
                </Item>
               
                <Item stackedLabel>
@@ -138,6 +148,11 @@ export default class DonneeG extends React.Component{
                 </Text>
               </Button>
             </View>
+            <Text>
+              {this.state.nom}
+                {this.state.date}
+                {this.state.type}
+              </Text>
             </View>
         );
     }
