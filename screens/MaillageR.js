@@ -1,27 +1,16 @@
 import React, { Component } from "react";
-import {StyleSheet,View, Text,TextInput,ScrollView,FlatList,Alert} from 'react-native';
+import {StyleSheet,View, Text,TextInput,ScrollView,FlatList,Alert,BackAndroid,BackHandler} from 'react-native';
 import {Header,Left,Right,Body,Button,Icon, Content,Container} from 'native-base';
+import MaillageS from './MaillageS';
 import MailleR from './MailleRigide';
 import {DrawerActions} from 'react-navigation-drawer';
-
 export default class Maillage extends Component
 {
-  constructor()
-  {
-      super();
-
-      this.state = 
-        { 
-
-          TextInputValue: '0'
-
-        }
-  }
-    render(){
-         
+        render(){
+            const { navigation } = this.props;
         return (
     <Container>
-        
+         
             <Header style={{backgroundColor:"#C8553D"}} androidStatusBarColor="black">
           <Left>
             <Button transparent  onPress={() => this.props.navigation.dispatch(DrawerActions.openDrawer())}
@@ -31,7 +20,7 @@ export default class Maillage extends Component
             </Button>
           </Left>
           <Body style ={styles.body}>
-              <Text style={styles.text} >    </Text>
+              <Text style={styles.text} ></Text>
           </Body>
           <Right>
           
@@ -40,35 +29,22 @@ export default class Maillage extends Component
         
         <View style ={styles.sview}>
         <Left>
-            <Button style = {styles.but}  
+            <Button style = {styles.but}  onPress={() =>   this.props.navigation.navigate('User')} 
             >
               <Icon name='arrow-back' />
               <Text style ={styles.textB}> Précedente </Text>
              
             </Button>
           </Left>
-          <Body style ={styles.body}>
+          <Body style ={styles.body}  >
               <Text style={styles.text} >   Maille n 15 </Text>
           </Body>
           <Right>
            
-          <Button style = {styles.but}   onPress={()=>{
- 
- if( this.state.TextInputValue == 1 ){
-
-   Alert.alert("ONE");
- }
- else{
-
-   Alert.alert("Sorry Entered Value Dose not Exist.")
-
- }
-
-}}
-            >
+          <Button style = {styles.but}   onPress={() =>  this.props.navigation.navigate('User')} 
+            >     
               <Icon name='arrow-forward'/>
               <Text style ={styles.textB}>Suivante</Text>
-             
             </Button>
             
           </Right>
@@ -76,7 +52,7 @@ export default class Maillage extends Component
           <MailleR></MailleR>
           <View style ={styles.sview}>
         
-        <Button style = {styles.but2}  
+        <Button style = {styles.but2}  onPress={() =>   this.props.navigation.navigate('User')} 
             >  
               <Text style ={styles.textB}>Changer la Section</Text>  
             </Button>
@@ -130,8 +106,6 @@ const styles = StyleSheet.create({
     but2 : {
       flexDirection : 'column', 
       height : 60,
-     // alignItems:'baseline',
-      //justifyContent:'space-evenly',
       backgroundColor : '#FFD5C2',
       flex : 1,
   },

@@ -12,7 +12,6 @@ export default class Maillage extends Component
 
       this.state = 
         { 
-
           TextInputValue: '0'
 
         }
@@ -52,19 +51,7 @@ export default class Maillage extends Component
           </Body>
           <Right>
            
-          <Button style = {styles.but}   onPress={()=>{
- 
- if( this.state.TextInputValue == 1 ){
-
-   Alert.alert("ONE");
- }
- else{
-
-   Alert.alert("Sorry Entered Value Dose not Exist.")
-
- }
-
-}}
+          <Button style = {styles.but}   onPress={() =>   this.props.navigation.navigate('User')} 
             >
               <Icon name='arrow-forward'/>
               <Text style ={styles.textB}>Suivante</Text>
@@ -76,11 +63,11 @@ export default class Maillage extends Component
           <MailleS></MailleS>
           <View style ={styles.sview}>
         
-        <Button style = {styles.but2}  
+        <Button style = {styles.but2} onPress={() =>   this.props.navigation.navigate('User')}  
             >  
               <Text style ={styles.textB}>Changer la Section</Text>  
             </Button>
-          <Button style = {styles.but2}  
+          <Button style = {styles.but2}  onPress={() =>   this.props.navigation.navigate('User')} 
             > 
               <Text style ={styles.textB}>Générer le fichier </Text>
              
