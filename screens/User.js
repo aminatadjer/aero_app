@@ -7,6 +7,7 @@ import DonneeG from './DonneeG';
 import Section from './Section';
 import Piste from './Piste';
 import Maille from './Maille';
+import Maillage from './Maillage';
 import { createAppContainer,tabBarOptions,TabBarNavigationConfig } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 const MainNavigator = createStackNavigator({
@@ -14,6 +15,8 @@ const MainNavigator = createStackNavigator({
   Piste: Piste,
   Section: Section,
   Maille: Maille,
+  Maillage: Maillage,
+
 });
 
 const StackNav = createAppContainer(MainNavigator);
@@ -26,6 +29,7 @@ const Tab = createMaterialTopTabNavigator(
   Piste: Piste,
   Section: Section,
   Maille: Maille,
+  
  }, {
    tabBarOptions:{
     style: {
