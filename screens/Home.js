@@ -19,7 +19,7 @@ const cards = [
   {
     text: 'Etape 3',
     name: ' Glisser',
-    image: require('../assets/airplane.png'),
+    image: require('../assets/izan.png'),
     text2 :'Choisissez le numéro de Maille et cliquez sur commencer dans la page Maille pour que  le Maillage débutera , Complétez les informations de chaque maille et à la fin cliquez sur génèrer fichier '
   },
   
