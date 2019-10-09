@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import {StyleSheet,View, Text} from 'react-native';
 import { Container, Header, Content, Card, CardItem,  Body,Item } from "native-base";
 import { Form, Input, Label,Icon,Button } from 'native-base';
+
+
+
+
 export default class Maille extends Component {
   render() {
     const { navigation } = this.props;
@@ -88,7 +92,7 @@ export default class Maille extends Component {
                   Retour
                 </Text>
               </Button>
-              <Button style={{padding:10,margin:10,marginLeft:208,backgroundColor:'#C8553D',alignSelf:'flex-end'}}>
+              <Button style={{padding:10,margin:10,marginLeft:208,backgroundColor:'#C8553D',alignSelf:'flex-end'}} onPress={() => this.props.navigation.navigate('Maillage')}>
                 <Text style={{color:'#FFD5C2'}}>
                   Valider
                 </Text>
