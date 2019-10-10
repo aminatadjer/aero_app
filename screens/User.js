@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Text, View } from 'react-native';
 import { Icon, Button, Container, Header, Content, Left, Right, Body, ActionSheet } from 'native-base';
@@ -10,16 +11,7 @@ import Maille from './Maille';
 import Maillage from './Maillage';
 import { createAppContainer,tabBarOptions,TabBarNavigationConfig } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-const MainNavigator = createStackNavigator({
-  DonneeG: DonneeG,
-  Piste: Piste,
-  Section: Section,
-  Maille: Maille,
-  Maillage: Maillage,
 
-});
-
-const StackNav = createAppContainer(MainNavigator);
 
 
 const Tab = createMaterialTopTabNavigator(
